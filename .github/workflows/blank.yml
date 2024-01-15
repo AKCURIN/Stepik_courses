@@ -1,0 +1,77 @@
+import math
+def f(x):
+    return x-0.65*x-3*math.sin(math.sqrt(x))-3.8
+
+def bisection():
+    a = -0.3
+    b = 0.7
+    E = 0.0001
+    while abs(b - a) > E:
+        c = (a + b) / 2
+        if f(c) == 0:
+            break
+        if f(a) * f(c) < 0:
+            b = c
+        else:
+            a = c
+    root = (a + b) / 2
+    pogresh = abs(f(root))
+    return root, pogresh
+
+root, pogresh = bisection()
+rn = f(root)
+print("Метод деления отрезка пополам:")
+print("Приближенное значение корня:", root)
+print("Невязка:", rn)
+
+E = 0.0001
+x0 = 2.2
+
+# Производная функции f(x)
+def df(x):
+    return 7/20 - (3 * math.cos(math.sqrt(x))) / 2*math.sqrt(x)
+
+# Метод простой итерации
+def simple_iteration(x0, E):
+    xn = x0
+    iterations = 0
+    while True:
+        xn1 = 0.65*xn+3*math.sin(math.sqrt(xn))+3.8
+        iterations += 1
+        if abs((xn1 - xn) / xn1) < E:
+            break
+        xn = xn1
+    return xn1, abs((xn1 - xn) / xn1), iterations, f(xn1)
+
+# Метод Ньютона
+def newton(x0, E):
+    xn = x0
+    iterations = 0
+    while True:
+        xn1 = xn - f(xn) / df(xn)
+        iterations += 1
+        if abs((xn1 - xn) / xn1) < E:
+            break
+        xn = xn1
+    return xn1, abs((xn1 - xn) / xn1), iterations, f(xn1)
+
+# Вызываем методы и выводим результаты
+print("\nМетод простой итерации:")
+result_simple = simple_iteration(x0, E)
+print("Приближенное значение корня:", result_simple[0])
+print("Погрешность:", result_simple[1])
+print("Количество итераций:", result_simple[2])
+print("Невязка:", result_simple[3])
+
+print("\nМетод Ньютона:")
+result_newton = newton(x0, E)
+print("Приближенное значение корня:", result_newton[0])
+print("Погрешность:", result_newton[1])
+print("Количество итераций:", result_newton[2])
+print("Невязка:", result_newton[3])
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
