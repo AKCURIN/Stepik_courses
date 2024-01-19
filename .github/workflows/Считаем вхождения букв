@@ -1,0 +1,4 @@
+s=input().upper()
+counter=len(s)
+G=s.count("G")+s.count("C")
+print((G/counter)*100)
