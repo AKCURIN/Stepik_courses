@@ -1,0 +1,11 @@
+s=input()
+p_l=s[0]
+k=0
+for i in s:
+    if i==p_l:
+        k+=1
+    else:
+        print(p_l+str(k),end='')
+        k=1
+    p_l=i
+print(p_l+str(k))
