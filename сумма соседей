@@ -1,0 +1,21 @@
+a=[int(i) for i in input().split()]
+sum=0
+new=[]
+if len(a)>2:
+    for i in range(0,len(a)):
+        if i==0:
+            sum=a[1]+a[-1]
+            new.append(sum)
+        if i==len(a)-1:
+            sum=a[0]+a[-2]
+            new.append(sum)
+        if i!=0 and i!=len(a)-1:
+            sum=a[i-1]+a[i+1]
+            new.append(sum)
+    print(*new)
+if len(a)==2:
+    new.append(a[1]*2)
+    new.append(a[0]*2)
+    print(*new)
+if len(a)==1:
+    print(*a)
