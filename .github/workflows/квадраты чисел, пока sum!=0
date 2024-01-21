@@ -1,0 +1,13 @@
+a=[]
+sum=0
+squares=0
+while True:
+    i=int(input())
+    sum+=i
+    a.append(i)
+    squares+=i*i
+    if sum==0:
+        break
+    else:
+        continue
+print('\n',squares)
