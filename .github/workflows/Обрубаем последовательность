@@ -1,0 +1,10 @@
+a=[]
+size=int(input())
+if size==1:
+    print(*[1])
+if size==2:
+    print(*[1, 2])
+if size>2:
+    for i in range(1,size):
+        a += [i] * i
+    print(*a[:size])
