@@ -1,0 +1,10 @@
+#пользователь вводит через пробел цифры допустим 2 3 5 1 2 2 7
+a=[int(i) for i in input().split()]
+b=a.sort()
+new=[]
+for i in a:
+    k=a.count(i)
+    if k>1:
+        if not i in new:
+            new.append (i)
+print(*new)
